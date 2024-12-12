@@ -36,6 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         }
         ?>
     </table>
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+        <td><input type="submit" value="esotico" name="action"></td>
+    </form>
     <br><br>
     <h3>Aggiungi un nuovo prodotto:</h3>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
@@ -71,6 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $result = $conn->prepare($query);
             $result->bind_param("sdsi", $_POST["prodotto"], $_POST["prezzo"], $_POST["data_vendita"], $_POST["id"]);
             $result->execute();
+            header("Location:/");
+        }
+
+        if ($action == "esotico") {
+            $query = "UPDATE Vendite SET prezzo=prezzo*0.9";
+            $result = $conn->query($query);
             header("Location:/");
         }
 
