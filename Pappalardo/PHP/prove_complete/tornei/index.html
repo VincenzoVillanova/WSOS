@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <center>Benvenuti</center>
+    </h1>
+
+    <a href="stampa.php">Clicca qui!</a> per visualizzare la lista dei tornei
+
+    <br><br><br>
+    <h3>Inserisci un nuovo torneo: </h3>
+    <form action="insert.php" method="post">
+        <table>
+            <tr>
+                <td>Nome: </td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr>
+                <td>Logo: </td>
+                <td><input type="text" name="logo" required></td>
+            </tr>
+            <tr>
+                <td>Champion: </td>
+                <td><input type="text" name="champion" required></td>
+            </tr>
+            <tr>
+                <td>Year: </td>
+                <td><input type="number" name="year" required> </td>
+                <td>
+                    <input type="submit" name="option" value="aggiungi">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Università</title>
+</head>
+
+<body>
+    <h1>
+        <center>BENVENUTI!</center>
+    </h1>
+
+    <form action="operazioni.php" method="get">
+        <button>Visualizza lista università </button>
+    </form>
+    <br>
+
+    <p>Inserisci un nuovo corso:</p>
+    <form action="operazioni.php" method="post">
+        Codice Corso:
+        <input type="text" name="codice_corso" placeholder="Inserisci nome">
+        <br>
+        Nome:
+        <input type="text" name="nome_corso" placeholder="Inserisci nome">
+        <br>
+        Descrizione:
+        <input type="text" name="descrizione" placeholder="Inserisci descrizione">
+        <br>
+        <input type="submit" name="action" value="aggiungi">
+    </form>
+</body>
+
+</html>
