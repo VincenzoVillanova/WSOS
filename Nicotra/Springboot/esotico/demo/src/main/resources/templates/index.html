@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esami</title>
+</head>
+
+<body>
+    <h1>
+        <center>SmartEdu</center>
+    </h1>
+
+    <h3>Lista esami:</h3>
+    <table border="1">
+        <div th:each="es : ${esami}">
+            <tr>
+                <td>ID: <span th:text="${es.id}"></span></td>
+                <td>Nome: <span th:text="${es.nome}"></span></td>
+                <td>Voto: <span th:text="${es.voto}"></span></td>
+
+                <form action="/form" method="POST">
+                    <td><input type="submit" name="action" value="Modifica"></td>
+                    <td><input type="submit" name="action" value="Rimuovi"></td>
+                    <input type="hidden" name="id" th:value="${es.id}" />
+                </form>
+            </tr>
+        </div>
+    </table>
+
+    <h3>Inserisci materia : </h3>
+    <table>
+        <form action="/insert" method="POST">
+            <tr>
+                <td>Nome:<input type="text" name="nome" required></td>
+                <td>Voto:<input type="text" name="voto" required></td>
+                <td><button>Inserisci</button></td>
+            </tr>
+        </form>
+    </table>
+
+</body>
+
+</html>

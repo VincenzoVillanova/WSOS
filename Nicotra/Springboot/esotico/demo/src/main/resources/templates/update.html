@@ -1,0 +1,20 @@
+<html>
+
+<body>
+    <h2>Form di aggiornamento</h2>
+
+    <form action="/update" method="POST" th:object="${esami}">
+        <table>
+            <tr>
+                <td>Nome: <input type="text" th:field="*{nome}" /></td>
+                <td>Voto: <input type="text" th:field="*{voto}" /></td>
+                <td><button type="submit">Salva modifiche</button></td>
+            </tr>
+        </table>
+        <input type="hidden" th:field="*{id}" />
+    </form>
+
+    <br><a href="/"><button>Torna alla lista degli esami</button></a>
+</body>
+
+</html>
