@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Libreria</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home - Libreria</center>
+    </h1>
+    <h3>Lista dei libri disponibili:</h3>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th>pagine</th>
+            <th colspan="2">azioni</th>
+        </tr>
+
+        <tr th:each="libro:${libri}">
+            <td th:text="${libro.id}"></td>
+            <td th:text="${libro.nome}"></td>
+            <td th:text="${libro.pagine}"></td>
+            <td>
+                <form action="/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${libro.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${libro.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h3>Inserisci un nuovo libro:</h3>
+    <form action="/update" method="post">
+        <input type="text" name="nome">
+        <input type="number" name="pagine">
+        <button>invia</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Magazzino</title>
+</head>
+
+<body>
+    <h1>
+        <center>Benvenuti nel Magazzino!</center>
+    </h1>
+    <h3>Ordini effettuati:</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantità</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Ciclo attraverso gli ordini e mostro i dati -->
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}">ID</td>
+                <td th:text="${order.nome}">Nome</td>
+                <td th:text="${order.quantita}">Quantità</td>
+                <td>
+                    <!-- Pulsante per modificare e eliminare l'ordine -->
+                    <a th:href="@{/orders/edit(id=${order.id})}">Modifica</a>
+                    <form action="/orders/form" method="post" style="display:inline;">
+                        <input type="hidden" name="id" th:value="${order.id}">
+                        <button type="submit" name="action" value="Elimina">Elimina</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Inserisci un nuovo ordine:</h3>
+    <form action="/orders/insert" method="post">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="number" name="quantita" placeholder="Quantità" required>
+        <button type="submit">Invia</button>
+    </form>
+</body>
+
+</html>

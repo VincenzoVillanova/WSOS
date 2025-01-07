@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.models.Esame;
 import com.example.demo.repository.EsameRepository;
@@ -11,46 +12,53 @@ import com.example.demo.repository.EsameRepository;
 @Controller
 public class EsameController {
 
-    private final EsameRepository repo;
+    private final EsameRepository esameRepository;
 
-    public EsameController(EsameRepository repo) {
-        this.repo = repo;
+    public EsameController(EsameRepository esameRepository) {
+        this.esameRepository = esameRepository;
     }
 
-    // Home
+    // Visualizza tutti gli esami o solo quelli con un voto specificato
     @GetMapping("/")
-    public String getAllExam(Model model) {
-        model.addAttribute("esami", repo.findAll());
+    public String getAllEsami(@RequestParam(required = false) Integer voto, Model model) {
+        if (voto != null) {
+            // Se è passato un parametro voto, filtra gli esami con quel voto
+            model.addAttribute("esami", esameRepository.findByVoto(voto));
+        } else {
+            // Altrimenti mostra tutti gli esami
+            model.addAttribute("esami", esameRepository.findAll());
+        }
         return "index";
     }
 
+    // Inserisce un nuovo esame
     @PostMapping("/insert")
-    public String insert(Esame es) {
-        repo.save(es);
+    public String insertEsame(Esame esame) {
+        esameRepository.save(esame);
         return "redirect:/";
     }
 
-    // Delete or Update
+    // Gestisce le azioni di modifica o eliminazione
     @PostMapping("/form")
-    public String form(String action, Long id, Model model) {
-
-        if (action.equals("Modifica")) {
-            Esame es = repo.findById(id).orElse(null); // Find record in databse
-            model.addAttribute("esami", es); // Pass record to the form for update
+    public String handleFormAction(String action, Long id, Model model) {
+        if ("Modifica".equals(action)) {
+            Esame esame = esameRepository.findById(id).orElse(null);
+            model.addAttribute("esame", esame); // Passa il record al form per la modifica
             return "update";
         }
-        if (action.equals("Rimuovi")) {
-            repo.deleteById(id);
+
+        if ("Rimuovi".equals(action)) {
+            esameRepository.deleteById(id);
             return "redirect:/";
         }
 
-        return "read";
+        return "index"; // In caso di azione non valida
     }
 
-    // Update (same code of Insert)
+    // Aggiorna un esame
     @PostMapping("/update")
-    public String update(Esame es) {
-        repo.save(es);
+    public String updateEsame(Esame esame) {
+        esameRepository.save(esame);
         return "redirect:/";
     }
 }

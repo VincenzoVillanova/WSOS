@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodotti</title>
+</head>
+
+<body>
+    <h1>
+        <center>HOME</center>
+    </h1>
+    <h3>Visualizzazione prodotti:</h3>
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Prezzo</th>
+            <th>Azioni</th>
+        </tr>
+
+        <tr th:each="prodotto : ${product}">
+            <td th:text="${prodotto.nomeProdotto}"></td>
+            <td th:text="${prodotto.prezzoProdotto}"></td>
+            <td>
+                <!-- Modifica prodotto -->
+                <form action="/update" method="post">
+                    <input type="hidden" name="id" th:value="${prodotto.id}">
+                    <input type="text" name="nomeProdotto" th:placeholder="${prodotto.nomeProdotto}">
+                    <input type="number" name="prezzoProdotto" th:placeholder="${prodotto.prezzoProdotto}">
+                    <button type="submit">Modifica</button>
+                </form>
+                <!-- Elimina prodotto -->
+                <form action="/delete" method="post">
+                    <input type="hidden" name="id" th:value="${prodotto.id}">
+                    <button type="submit">Elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <h3>Inserisci un prodotto:</h3>
+    <form action="/insert" method="post">
+        <input type="text" name="nomeProdotto" placeholder="Inserire nome" required>
+        <input type="number" name="prezzoProdotto" placeholder="Inserire prezzo" required>
+        <button type="submit">Invia</button>
+    </form>
+</body>
+
+</html>

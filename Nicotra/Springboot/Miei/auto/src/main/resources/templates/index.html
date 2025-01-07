@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home</center>
+    </h1>
+    <h3>Lista dei veicoli:</h3>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>modello</th>
+            <th>cavalli</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="car:${cars}">
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.modello}"></td>
+            <td th:text="${car.cavalli}"></td>
+            <td>
+                <form action="/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${car.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${car.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h3>Inserisci un nuovo veicolo:</h3>
+    <form action="/update" method="post">
+        <span>Inserisci modello:</span>
+        <input type="text" name="modello">
+        <span>Inserisci cavalli:</span>
+        <input type="number" name="cavalli" required>
+        <button>aggiungi</button>
+    </form>
+</body>
+
+</html>

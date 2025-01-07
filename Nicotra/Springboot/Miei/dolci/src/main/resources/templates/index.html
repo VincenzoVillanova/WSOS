@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home - Dolci</center>
+    </h1>
+    <h3>Lista dolci disponibili:</h3>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>marca</th>
+            <th>nome</th>
+            <th>quantità</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="dolce:${dolci}">
+            <td th:text="${dolce.id}"></td>
+            <td th:text="${dolce.marca}"></td>
+            <td th:text="${dolce.nome}"></td>
+            <td th:text="${dolce.quantita}"></td>
+            <td>
+                <form action="/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${dolce.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${dolce.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br>
+    <h3>Inserisci un nuovo dolce:</h3>
+    <form action="/update" method="post">
+        <input type="text" name="marca" placeholder="Inserisci marca">
+        <input type="text" name="nome" placeholder="Inserisci nome">
+        <input type="number" name="quantita" min="0" placeholder="Inserisci quantità">
+        <button>aggiungi</button>
+    </form>
+</body>
+
+</html>

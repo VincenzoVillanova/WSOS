@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https:/www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+    <form action="/update" method="post" th:object="${corso}">
+        <table>
+            <tr>
+                <input type="hidden" name="id" th:value="${corso.id}">
+                <td><input type="text" name="nome" th:value="${corso.nome}" placeholder="inserisci nome"></td>
+                <td><input type="text" name="edificio" th:value="${corso.edificio}" placeholder="inserisci edificio">
+                </td>
+                <td><input type="number" name="telefono" th:value="${corso.telefono}" placeholder="inserisci telefono">
+                </td>
+                <td><button>modifica</button> - <a href="/">Torna alla home</a></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

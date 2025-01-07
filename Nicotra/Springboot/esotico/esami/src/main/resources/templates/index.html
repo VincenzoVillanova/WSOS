@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESAMI</title>
+</head>
+
+<body>
+    <h1>
+        <center>ESAMI DB</center>
+    </h1>
+
+
+    <h2>LISTA ESAMI</h2>
+    <div th:each="esami : ${esami}">
+        ID: <span th:text="${esami.id}"></span> -
+        Nome: <span th:text="${esami.nome}"></span> -
+        Voto: <span th:text="${esami.voto}"></span>
+        <form action="/form" method="post">
+            <input type="hidden" name="id" value="${esami.id}">
+            <input type="submit" name="action" value="Modifica">
+            <input type="submit" name="action" value="Elimina">
+        </form>
+    </div>
+
+    <br><br>
+    <h3>Inserisci un nuovo voto:</h3>
+    <form action="/insert" method="post">
+        <table>
+            <tr>
+                <td>Nome : <input type="text" name="nome"></td>
+                <td>Voto : <input type="number" name="voto"></td>
+                <td><button>Invia nuova materia</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

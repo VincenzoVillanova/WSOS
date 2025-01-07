@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert/edit</title>
+</head>
+
+<body>
+    <h1>
+        <center>Inserimento o modifica</center>
+    </h1>
+
+    <form action="#" th:action="@{/giocatori}" th:object="${giocatori}" method="post">
+        <table>
+            <tr>
+                <td>
+                    Id: <input type="text" th:field="*{id}" th:disabled="${giocatori.id == 0}"
+                        th:readonly="${giocatori.id != 0}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Nominativo: <input type="text" th:field="*{nome}"></td>
+            </tr>
+            <tr>
+                <td>Numero: <input type="number" th:field="*{numero}"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Invia">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <br>
+    <a href="/">Torna alla Home</a>
+</body>
+
+</html>

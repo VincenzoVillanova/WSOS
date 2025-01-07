@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it" xmls:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home</center>
+    </h1>
+
+    <h3>Elenco dei corsi:</h3>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th>edificio</th>
+            <th>telefono</th>
+            <th colspan="2">azioni</th>
+        </tr>
+
+        <tr th:each="corso:${corsi}">
+            <td th:text="${corso.id}"></td>
+            <td th:text="${corso.nome}"></td>
+            <td th:text="${corso.edificio}"></td>
+            <td th:text="${corso.telefono}"></td>
+            <td>
+                <form action="/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${corso.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${corso.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h3>Inserisci un nuovo corso</h3>
+    <form action="/update" method="post">
+        <table>
+            <tr>
+                <td><input type="text" name="nome" placeholder="inserisci nome"></td>
+                <td><input type="text" name="edificio" placeholder="inserisci edificio"></td>
+                <td><input type="number" name="telefono" placeholder="inserisci numero"></td>
+                <td><button>invia</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

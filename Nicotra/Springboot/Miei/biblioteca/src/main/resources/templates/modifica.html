@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modifica</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+
+    <form action="/update" method="post" th:object="${libro}">
+        <input type="hidden" name="id" th:value="${libro.id}">
+        <input type="text" name="nome" th:value="${libro.nome}">
+        <input type="number" name="pagine" th:value="${libro.pagine}">
+        <button>modifica</button>
+    </form>
+</body>
+
+</html>

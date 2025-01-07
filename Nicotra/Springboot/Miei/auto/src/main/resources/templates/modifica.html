@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modifica</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+
+    <form action="/update" method="post" th:object="${car}">
+        <input type="hidden" name="id" th:value="${car.id}">
+        <span>Inserisci modello:</span>
+        <input type="text" name="modello" th:value="${car.modello}">
+        <span>Inserisci cavalli:</span>
+        <input type="number" name="cavalli" th:value="${car.cavalli}" required>
+        <button>modifica</button>
+    </form>
+</body>
+
+</html>

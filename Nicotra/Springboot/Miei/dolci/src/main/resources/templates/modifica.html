@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it" xmlns="http.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica in corso...</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+    <form action="/update" method="post" th:object="${dolce}">
+        <input type="hidden" name="id" th:value="${dolce.id}">
+        <input type="text" name="marca" placeholder="Inserisci marca" th:value="${dolce.marca}">
+        <input type="text" name="nome" placeholder="Inserisci nome" th:value="${dolce.nome}">
+        <input type="number" name="quantita" min="0" placeholder="Inserisci quantità" th:value="${dolce.quantita}">
+        <button>modifica</button>
+    </form>
+</body>
+
+</html>

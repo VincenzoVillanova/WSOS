@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserimento</title>
+</head>
+
+<body>
+    <h1>
+        <center>Inserimento in corso...</center>
+    </h1>
+    <form action="/giocatori/aggiornamento" method="post" th:object="${giocatore}">
+        <input type="hidden" th:value="${giocatore.id}" name="id">
+        <input type="text" th:value="${giocatore.nome}" name="nome" placeholder="inserisci nome">
+        <input type="number" th:value="${giocatore.numero}" name="numero" placeholder="inserisci numero">
+        <button>Invia</button>
+    </form>
+    <a href="/">Torna alla home</a>
+    -
+    <a href="/giocatori/lista">Vai alla lista</a>
+</body>
+
+</html>
