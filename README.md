@@ -6,12 +6,7 @@ La repository "**WSOS 2024-2025**" è dedicata al corso universitario di WEB AND
 
 ## Argomenti trattati
 
-- **Introduzione ai sistemi concorrenti e distribuiti**  
-- **Programmazione con socket**:  
-  - Principali system call  
-  - Gestione di indirizzi IP e socket  
-  - DNS e interfaccia al resolver  
-- **Comunicazione connectionless e socket non bloccanti**, sia in linguaggio C che in Java  
+- **Introduzione ai sistemi concorrenti e distribuiti**   
 - **Sviluppo di applicazioni web**:  
   - Java Servlets e principi di Web Application  
   - Servizi web REST con JSON  
@@ -20,7 +15,3 @@ La repository "**WSOS 2024-2025**" è dedicata al corso universitario di WEB AND
   - Laravel MVC  
   - Spring Boot  
 - **Creazione di client per il web e API web**
-
-## Obiettivi
-
-Questo approccio mira a offrire competenze pratiche per progettare e sviluppare applicazioni distribuite e servizi web moderni, fornendo strumenti fondamentali per affrontare le sfide del settore IT.
