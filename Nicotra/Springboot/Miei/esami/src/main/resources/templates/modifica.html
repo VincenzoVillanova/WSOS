@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ita" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica in corso...</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+    <h3>Elemento che stai modificando...</h3>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th>professore</th>
+            <th>cfu</th>
+        </tr>
+        <tr th:object="${esame}">
+            <td th:text="${esame.id}"></td>
+            <td th:text="${esame.nome}"></td>
+            <td th:text="${esame.professore}"></td>
+            <td th:text="${esame.cfu}"></td>
+        </tr>
+    </table>
+
+    <br><br><br>
+    <h3>Modifica i campi dell'esame:</h3>
+    <form action="/update" method="post" th:object="${esame}">
+        <input type="hidden" name="id" th:value="${esame.id}">
+        <input type="text" name="nome" placeholder="inserisci nome" th:value="${esame.nome}">
+        <input type=" text" name="professore" placeholder="inserisci professore" th:value="${esame.professore}">
+        <input type=" number" name="cfu" placeholder="inserisci cfu" th:value="${esame.cfu}">
+        <button>modifica</button>
+    </form>
+</body>
+
+</html>

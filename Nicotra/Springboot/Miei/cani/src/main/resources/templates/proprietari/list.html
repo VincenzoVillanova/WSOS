@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ita" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Lista Proprietari</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nominativo</th>
+            <th>azioni</th>
+        </tr>
+
+        <tr th:each="prop:${proprietari}">
+            <td th:text="${prop.id}"></td>
+            <td th:text="${prop.nominativo}"></td>
+            <td>
+                <a th:href="@{/proprietari/{id}/edit(id=${prop.id})}">modifica</a>
+                -
+                <a th:href="@{/proprietari/{id}/delete(id=${prop.id})}">elimina</a>
+                -
+                <a th:href="@{/proprietari/{search}/search(search=${prop.id})}">filter</a>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="@{/proprietari/new}">Inserisci nuovo Proprietario</a>
+    -
+    <a th:href="@{/cani}">Lista totale dei cani</a>
+</body>
+
+</html>

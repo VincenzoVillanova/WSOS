@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <center>Lista Brand</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th colspan="3">azioni</th>
+        </tr>
+
+        <tr th:each="brand:${brands}">
+            <td th:text="${brand.id}"></td>
+            <td th:text="${brand.nome}"></td>
+            <td>
+                <form action="/brand/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${brand.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/brand/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${brand.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+            <td>
+                <form action="/brand/filter" method="post">
+                    <input type="hidden" name="search" th:value="${brand.id}">
+                    <button>filtra</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    <h3>Inserisci un nuovo brand:</h3>
+    <form action="/brand/update" method="post">
+        <span>nome:</span> <input type="text" name="nome">
+        <button>invia</button>
+    </form>
+
+    <a href="/abbigliamento">Torna ai capi di abbigliamento</a>
+</body>
+
+</html>

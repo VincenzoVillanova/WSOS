@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ita" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Lista Cani</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nominativo</th>
+            <th>razza</th>
+            <th>anni</th>
+            <th>padrone</th>
+            <th>azioni</th>
+        </tr>
+
+        <tr th:each="cane:${cani}">
+            <td th:text="${cane.id}"></td>
+            <td th:text="${cane.nome}"></td>
+            <td th:text="${cane.razza}"></td>
+            <td th:text="${cane.anni}"></td>
+            <td th:text="${cane.proprietario.nominativo}"></td>
+            <td>
+                <a th:href="@{/cani/{id}/edit(id=${cane.id})}">modifica</a>
+                -
+                <a th:href="@{/cani/{id}/delete(id=${cane.id})}">elimina</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <h3>Ricerca per nome del cane:</h3>
+    <form action="/cani/search" method="post">
+        <label>Nome:</label>
+        <input type="text" name="nome">
+        <button type="submit">Ricerca</button>
+    </form>
+
+    <br>
+
+    <a th:href="@{/cani/new}">Inserisci nuovo cane</a>
+    -
+    <a th:href="@{/proprietari}">Lista totale dei proprietari</a>
+</body>
+
+</html>

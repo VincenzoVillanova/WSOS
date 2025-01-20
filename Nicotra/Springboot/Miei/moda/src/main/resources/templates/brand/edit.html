@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+
+    <form action="/brand/update" th:object="${brand}" method="post">
+        <span>id:</span><input type="number" name="id" th:value="${brand.id}" readonly>
+        <span>nome brand:</span><input type="text" name="nome" th:value="${brand.nome}">
+        <button>invia</button>
+    </form>
+    <a href="/abbigliamento">Torna ai capi di abbigliamento</a> - <a href="/brand">Torna ai brand</a>
+</body>
+
+</html>

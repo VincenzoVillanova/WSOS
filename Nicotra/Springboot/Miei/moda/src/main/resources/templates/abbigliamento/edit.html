@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica in corso...</center>
+    </h1>
+
+    <form action="/abbigliamento/update" th:object="${abbigliamento}" method="post">
+        <span>id:</span><input type="number" name="id" th:value="${abbigliamento.id}" readonly>
+        <span>nome abbigliamento:</span><input type="text" name="nome" th:value="${abbigliamento.nome}">
+        <span>categoria:</span><input type=" text" name="categoria" th:value="${abbigliamento.categoria}">
+        <select name="brandId">
+            <option th:each=" brand:${brands}" th:value="${brand.id}" th:text="${brand.nome}">valore</option>
+        </select>
+        <button>invia</button>
+    </form>
+
+    <a href="/abbigliamento">Torna ai capi di abbigliamento</a> - <a href="/brand">Torna ai brand</a>
+</body>
+
+</html>

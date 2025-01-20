@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserimento o modifica</title>
+</head>
+
+<body>
+    <h1>
+        <center>Inserimento o modifica</center>
+    </h1>
+
+    <form th:action="@{/giocatore}" th:object="${giocatore}" method="post">
+        <label>Id:</label>
+        <input type="text" th:field="*{id}" th:disabled="${id==0}" th:readonly="${id != 0}">
+        <label>Nome: </label>
+        <input type="text" th:field="*{nominativo}">
+        <label>Numero: </label>
+        <input type="text" th:field="*{numero}">
+        <label>Squadra: </label>
+        <select th:field="*{squadra_id}">
+            <option th:each="squadra:${squadre}" th:value="${squadra.id}" th:text="${squadra.nome}">Nome Squadra
+            </option>
+        </select>
+
+        <button>Salva</button>
+    </form>
+
+    <a th:href="@{/giocatore}">Torna alla lista dei giocatori</a>
+</body>
+
+</html>

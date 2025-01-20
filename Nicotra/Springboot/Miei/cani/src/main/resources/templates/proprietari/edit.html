@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ita" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modifica o nuovo</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica o nuovo</center>
+    </h1>
+
+    <form th:action="@{/proprietari}" th:object="${proprietario}" method="post">
+        <label>Id:</label>
+        <input type="text" th:field="*{id}" readonly>
+        <label>Nominativo:</label>
+        <input type="text" th:field="*{nominativo}">
+        <button>invia</button>
+    </form>
+    <a th:href="@{/proprietari}">Torna alla lista proprietari</a>
+    -
+    <a th:href="@{/cani}"> Lista totale dei cani</a>
+</body>
+
+</html>

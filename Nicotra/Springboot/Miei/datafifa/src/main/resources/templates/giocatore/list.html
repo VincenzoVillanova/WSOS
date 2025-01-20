@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Squadre</title>
+</head>
+
+<body>
+    <h1>
+        <center>Lista Squadre</center>
+    </h1>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nominativo</th>
+            <th>numero</th>
+            <th>squadra</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="giocatore:${giocatori}">
+            <td th:text="${giocatore.id}"></td>
+            <td th:text="${giocatore.nominativo}"></td>
+            <td th:text="${giocatore.numero}"></td>
+            <td th:text="${giocatore.squadra_id.nome}"></td>
+            <td><a th:href="@{/giocatore/{id}/modifica(id=${giocatore.id})}">Modifica</a></td>
+            <td><a th:href="@{/giocatore/{id}/elimina(id=${giocatore.id})}">Elimina</a></td>
+        </tr>
+    </table>
+    <br>
+    <h3>Filtra per nome:</h3>
+    <form th:action="@{/giocatore/search}" method="post">
+        <label>Nome:</label>
+        <input type="text" name="search">
+        <button>Cerca</button>
+    </form>
+    <br>
+    <a th:href="@{/giocatore/new}">Inserisci nuovo giocatore</a>
+    -
+    <a th:href="@{/squadra}">Lista di squadre</a>
+</body>
+
+</html>

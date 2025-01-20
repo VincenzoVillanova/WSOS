@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserimento o modifica</title>
+</head>
+
+<body>
+    <h1>
+        <center>Inserimento o modifica</center>
+    </h1>
+
+    <form th:action="@{/squadra}" th:object="${squadra}" method="post">
+        <label>Id:</label>
+        <input type="text" th:field="*{id}" th:disabled="${id==0}" th:readonly="${id != 0}">
+        <label>Nome: </label>
+        <input type="text" th:field="*{nome}">
+        <button>Salva</button>
+    </form>
+
+    <a th:href="@{/squadra}">Torna alla lista delle squadre</a>
+</body>
+
+</html>
