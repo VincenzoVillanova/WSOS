@@ -10,4 +10,6 @@ import unict.dmi.moda.Model.Brand;
 public interface AbbigliamentoRepository extends JpaRepository<Abbigliamento, Long> {
 
     List<Abbigliamento> findByBrandId(Brand brandId);
+
+    List<Abbigliamento> findByNome(String nome);
 }

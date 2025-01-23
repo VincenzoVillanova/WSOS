@@ -1,5 +1,6 @@
 package com.example.datafifa.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Giocatore {
     private long id;
     private String nominativo;
     private int numero;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "squadra_id")
     private Squadra squadra_id;
 

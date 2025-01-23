@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home giocatore</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home giocatore</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nominativo</th>
+            <th>numero</th>
+            <th>squadra</th>
+        </tr>
+        <tr th:object="${giocatore}">
+            <td th:text="${giocatore.id}"></td>
+            <td th:text="${giocatore.nominativo}"></td>
+            <td th:text="${giocatore.numero}"></td>
+            <td th:text="${giocatore.squadra.nome}"></td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <h3>Modifica il giocatore:</h3>
+    <form action="/giocatore/update" method="post">
+        <span>id:</span><input type="number" name="id" th:value="${giocatore.id}" readonly>
+        <span>nominativo:</span><input type="text" name="nome" th:value="${giocatore.nominativo}">
+        <span>numero:</span><input type="number" name="numero" th:value="${giocatore.numero}">
+        <span>squadra:</span>
+        <select name="squadra">
+            <option th:each="sq:${squadre}" th:value="${sq.id}" th:text="${sq.nome}"></option>
+        </select>
+        <button>invia</button>
+    </form>
+</body>
+
+</html>

@@ -46,4 +46,12 @@ public class AbbigliamentoController {
         model.addAttribute("brands", repob.findAll());
         return "/abbigliamento/edit";
     }
+
+    @PostMapping("/abbigliamento/search")
+    public String search(Model model, @RequestParam String nome) {
+        model.addAttribute("abbigliamentos", repoa.findByNome(nome));
+        model.addAttribute("brands", repob.findAll());
+        return "/abbigliamento/list";
+    }
+
 }

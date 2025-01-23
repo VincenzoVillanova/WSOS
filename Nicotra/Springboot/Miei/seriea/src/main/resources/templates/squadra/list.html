@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home squadra</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home squadra</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="s:${squadre}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.nome}"></td>
+            <td>
+                <form action="/squadra/edit" method="post">
+                    <input type="hidden" name="id" th:value="${s.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/squadra/delete" method="post">
+                    <input type="hidden" name="id" th:value="${s.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h3>Inserisci una nuova squadra:</h3>
+    <form action="/squadra/update" method="post">
+        <span>nome:</span><input type="text" name="nome">
+        <button>invia</button>
+    </form>
+</body>
+
+</html>

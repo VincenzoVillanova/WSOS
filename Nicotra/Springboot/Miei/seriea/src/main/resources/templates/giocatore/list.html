@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home giocatore</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home giocatore</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nominativo</th>
+            <th>numero</th>
+            <th>squadra</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="s:${giocatori}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.nominativo}"></td>
+            <td th:text="${s.numero}"></td>
+            <td th:text="${s.squadra.nome}"></td>
+            <td>
+                <form action="/giocatore/edit" method="post">
+                    <input type="hidden" name="id" th:value="${s.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/giocatore/delete" method="post">
+                    <input type="hidden" name="id" th:value="${s.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h3>Inserisci una nuova giocatore:</h3>
+    <form action="/giocatore/update" method="post">
+        <span>nominativo:</span><input type="text" name="nominativo">
+        <span>numero:</span><input type="number" name="numero">
+        <span>squadra:</span>
+        <select name="squadra">
+            <option th:each="sq:${squadre}" th:value="${sq.id}" th:text="${sq.nome}"></option>
+        </select>
+        <button>invia</button>
+    </form>
+</body>
+
+</html>
