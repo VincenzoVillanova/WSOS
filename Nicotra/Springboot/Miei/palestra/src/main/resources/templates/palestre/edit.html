@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Palestre</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica palestre</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>nome</th>
+            <th>indirizzo</th>
+
+        </tr>
+        <tr th:object="${palestra}">
+            <td th:text="${palestra.nome}"></td>
+            <td th:text="${palestra.via}"></td>
+        </tr>
+    </table>
+
+    <h3>Modifica questa palestra:</h3>
+
+    <form action="/palestra/new" method="post" th:object="${palestra}">
+        <span>id:</span><input type="number" name="id" th:value="${palestra.id}">
+        <span>nome:</span><input type="text" name="nome" th:value="${palestra.nome}">
+        <br>
+        <span>indirizzo:</span><input type="text" name="via" th:value="${palestra.via}">
+        <br>
+        <button>invia</button>
+    </form>
+</body>
+
+</html>

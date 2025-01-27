@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica città</center>
+    </h1>
+    <br>
+    <h1>Modifica in corso di una città...</h1>
+    <form action="/citta/update" th:object="${citta}" method="post">
+        <input type="hidden" name="id" th:value="${citta.id}">
+        <span>nome:</span><input type="text" th:value="${citta.nome}" name="nome">
+        <span>stato:</span><input type="text" name="stato" th:value="${citta.stato}">
+        <button>salva</button>
+    </form>
+</body>
+
+</html>

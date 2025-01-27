@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Iscritto</title>
+</head>
+
+<body>
+    <h1>
+        <center>Modifica iscritto</center>
+    </h1>
+
+
+    <form action="/iscritto/new" method="post" th:object="${iscritto}">
+        <span>id:</span><input type="number" name="id" th:value="${iscritto.id}">
+        <span>nome:</span><input type="text" name="nome" th:value="${iscritto.nome}">
+        <br>
+        <span>eta:</span><input type="text" name="eta" th:value="${iscritto.eta}">
+        <br>
+        <span>peso:</span><input type="text" name="peso" th:value="${iscritto.peso}">
+        <br>
+        <select th:name="palestraId">
+            <option th:each="palestra:${palestre}" th:value="${palestra.id}" th:text="${palestra.nome}">
+            </option>
+        </select>
+        <button>invia</button>
+    </form>
+</body>
+
+</html>

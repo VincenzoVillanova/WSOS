@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home città</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>nome</th>
+            <th>stato</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="c:${citta}">
+            <td th:text="${c.nome}"></td>
+            <td th:text="${c.stato}"></td>
+            <td>
+                <form action="/citta/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${c.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/citta/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${c.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <h3>Inserisci una nuova città</h3>
+    <form action="/citta/update" method="post">
+        <span>nome:</span><input type="text" name="nome">
+        <span>stato:</span><input type="text" name="stato">
+        <button>salva</button>
+    </form>
+</body>
+
+</html>

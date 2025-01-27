@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home città</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>nominativo</th>
+            <th>città</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="c:${residenti}">
+            <td th:text="${c.nominativo}"></td>
+            <td th:text="${c.cittaId.nome}"></td>
+            <td>
+                <form action="/residenti/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${c.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/residenti/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${c.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <h3>Ricerca per città</h3>
+    <form action="/residenti/ricerca" method="post">
+        <span>città:</span><select name="id">
+            <option th:each="ci:${citta}" th:value="${ci.id}" th:text="${ci.nome}"></option>
+        </select>
+        <button>ricerca</button>
+    </form>
+    <br>
+    <h3>Inserisci una nuova città</h3>
+    <form action="/residenti/update" method="post">
+        <span>nominativo:</span><input type="text" name="nominativo">
+        <span>città:</span><select name="cittaId">
+            <option th:each="ci:${citta}" th:value="${ci.id}" th:text="${ci.nome}"></option>
+        </select>
+        <button>salva</button>
+    </form>
+</body>
+
+</html>

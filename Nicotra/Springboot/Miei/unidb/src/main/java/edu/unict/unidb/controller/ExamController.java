@@ -34,6 +34,14 @@ public class ExamController {
         return "exam/list";
     }
 
+    @PostMapping("/exam/esotico")
+    public String esotico(Model model) {
+        List<Exam> obj = repo.findByCfuLessThan(6);
+        obj = ExamRepository.incrementa(obj);
+        model.addAttribute("exams", repo.findAll());
+        return "exam/list";
+    }
+
     @PostMapping("/exam/create")
     public String addExam(Exam exam) {
         repo.save(exam);

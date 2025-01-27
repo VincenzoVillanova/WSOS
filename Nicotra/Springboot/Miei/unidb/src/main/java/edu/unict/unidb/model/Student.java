@@ -1,6 +1,5 @@
 package edu.unict.unidb.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +16,8 @@ public class Student {
     private String name;
     private String matricola;
 
-    @ManyToOne(cascade = CascadeType.PERSIST) // Usa PERSIST per salvare solo il nuovo Exam
-    @JoinColumn(name = "exam_id", nullable = false) // La colonna di join deve esistere
+    @ManyToOne
+    @JoinColumn(name = "exam_id")
     private Exam examId;
 
     public Student() {

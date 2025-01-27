@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Palestre</title>
+</head>
+
+<body>
+    <h1>
+        <center>Home Iscritto</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>nome</th>
+            <th>eta</th>
+            <th>peso</th>
+            <th>palestra</th>
+            <th colspan="2">azioni</th>
+        </tr>
+        <tr th:each="iscritto:${iscritti}">
+            <td th:text="${iscritto.nome}"></td>
+            <td th:text="${iscritto.eta}"></td>
+            <td th:text="${iscritto.peso}"></td>
+            <td th:text="${iscritto.palestraId.nome}"></td>
+            <td>
+                <form action="/iscritto/modifica" method="post">
+                    <input type="hidden" name="id" th:value="${iscritto.id}">
+                    <button>modifica</button>
+                </form>
+            </td>
+            <td>
+                <form action="/iscritto/elimina" method="post">
+                    <input type="hidden" name="id" th:value="${iscritto.id}">
+                    <button>elimina</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <div style="border: 1px;">
+        <h3>Ricerca per Palestra:</h3>
+        <form action="/iscritto/ricerca" method="post">
+            <select name="id">
+                <option th:each="palestra:${palestre}" th:value="${palestra.id}" th:text="${palestra.nome}">
+                </option>
+            </select>
+            <button>ricerca</button>
+        </form>
+    </div>
+
+
+
+    <h3>Inserisci una nuova iscritto:</h3>
+
+    <form action="/iscritto/new" method="post">
+        <span>nome:</span><input type="text" name="nome">
+        <br>
+        <span>eta:</span><input type="text" name="eta">
+        <br>
+        <span>peso:</span><input type="text" name="peso">
+        <br>
+        <span>palestra:</span>
+        <select th:name="palestraId">
+            <option th:each="palestra:${palestre}" th:value="${palestra.id}" th:text="${palestra.nome}">
+            </option>
+        </select>
+        <button>invia</button>
+    </form>
+</body>
+
+</html>
