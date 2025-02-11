@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizard List</title>
+</head>
+
+<body>
+    <h1>
+        <center>Lista dei Wizard</center>
+    </h1>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th>langhouse</th>
+            <th>azioni</th>
+        </tr>
+        <tr th:each="l : ${wizard}">
+            <td th:text="${l.id}"></td>
+            <td th:text="${l.nominativo}"></td>
+            <td th:text="${l.langhouseId.name}"></td>
+            <td>
+                <a th:href="@{/wizard/{id}/edit(id=${l.id})}">modifica</a>
+                <a th:href="@{/wizard/{id}/delete(id=${l.id})}">elimina</a>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="@{/wizard/new}">Aggiungi un nuovo Wizard</a>
+    <br>
+    <a th:href="@{/langhouse}">Langhouse</a>
+</body>
+
+</html>

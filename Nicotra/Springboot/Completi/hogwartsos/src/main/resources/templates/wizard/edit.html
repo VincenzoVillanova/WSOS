@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizard List</title>
+</head>
+
+<body>
+    <h1>
+        <center>Edit Wizard</center>
+    </h1>
+
+    <form th:action="@{/wizard}" th:object="${wizard}" method="post">
+        <span>id:</span> <input type="number" name="id" th:field="*{id}" readonly>
+        <span>nome:</span> <input type="text" name="nominativo" th:field="*{nominativo}">
+        <span>langhouse:</span>
+        <select name="langhouseId">
+            <option th:each="l : ${langhouse}" th:value="${l.id}" th:text="${l.name}"></option>
+        </select>
+        <button>invia</button>
+    </form>
+    <br>
+    <a th:href="@{/wizard}">Wizard</a>
+</body>
+
+</html>
