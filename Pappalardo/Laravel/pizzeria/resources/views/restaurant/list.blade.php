@@ -63,6 +63,22 @@
         <button>Invia</button>
     </form>
     <br>
+    <h3>Ricerca per chef:</h3>
+    <form action="/restaurants/api/findByChef" method="post">
+        @csrf
+        <select name="id">
+            @foreach ($chefs as $item)
+                <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+        </select>
+        <button>ricerca</button>
+    </form>
+    <br>
+    <h3>Elimina tutti i ristoranti:</h3>
+    <form action="/restaurants/api/deleteAllRestaurants" method="get">
+        <button>elimina tutto</button>
+    </form>
+    <br>
     <a href="/">Torna alla home</a>
     <br>
     <a href="/chefs">Vai a vedere gli chef</a>
